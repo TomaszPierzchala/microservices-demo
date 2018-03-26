@@ -1,14 +1,14 @@
 # microservices-demo
 
-Demo application to go with my [Microservices Blog](https://spring.io/blog/2015/07/14/microservices-with-spring) on the spring.io website.
+This is a copy/fork of Paul Chapman's repository [microservices-demo](https://github.com/paulc4/microservices-demo) with some, this time mine exstensions :smirk:
+
+
+Demo application goes with  great :thumbsup: Paul's [Microservices Blog](https://spring.io/blog/2015/07/14/microservices-with-spring) on the spring.io website.
+
 
 ![Demo System Schematic](https://github.com/paulc4/microservices-demo/blob/master/mini-system.jpg)
 
-Clone it and either load into your favorite IDE or use maven directly.
-
-## Versions
-
-To access V1.0.0 of the repo, corresponding to Spring Cloud release-train Angel.SR6, click on the `release` tab in https://github.com/paulc4/microservices-demo.
+Clone it and either load into your favorite IDE or use maven directly :
 
 ## Using an IDE
 
@@ -39,5 +39,4 @@ in the second and third windows.
  1. In a new window, run up a second account-server using HTTP port 2223:
      * `java -jar target/microservice-demo-1.1.0.RELEASE.jar accounts 2223`
  1. Allow it to register itself
- 1. Kill the first account-server and see the web-server switch to using the new account-server - no loss of service.
-
+ 1. Kill the first account-server and see the web-server switch to using the new account-server - no loss of service. :thumbsup:
