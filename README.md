@@ -1,6 +1,7 @@
 # microservices-demo
 
 This is a copy/fork of Paul Chapman's repository [microservices-demo](https://github.com/paulc4/microservices-demo) with some, this time mine exstensions :smirk:
+1. Creating a new account (MVC in Web Service added by now)
 
 
 Demo application goes with  great :thumbsup: Paul's [Microservices Blog](https://spring.io/blog/2015/07/14/microservices-with-spring) on the spring.io website.
