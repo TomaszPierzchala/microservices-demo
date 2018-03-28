@@ -5,6 +5,8 @@ import io.pivotal.microservices.services.web.Account;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +40,7 @@ public class WebAccountsController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields("accountNumber", "searchText");
+		binder.setAllowedFields("accountNumber", "searchText", "number", "owner", "balance");
 	}
 
 	@RequestMapping("/accounts")
@@ -93,4 +96,20 @@ public class WebAccountsController {
 			return ownerSearch(model, searchText);
 		}
 	}
+	
+	@RequestMapping(value = "/accounts/add", method = RequestMethod.GET)
+	public String searchForm(@ModelAttribute("account") AccountModel account) {
+		return "addAccount";
+	}
+	
+	@RequestMapping(value = "/accounts/doadd")
+	public String doAdd(@Valid @ModelAttribute("account") AccountModel  account,
+			BindingResult result) {
+		logger.info("web-service search() invoked: " + account);
+
+		if (result.hasErrors()) 	return "addAccount";
+
+		return "account"; // TODO to be finshed
+	}
+
 }

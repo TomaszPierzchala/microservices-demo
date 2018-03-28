@@ -1,0 +1,92 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<h1 class="new-account">Add account<span/></h1>
+
+	<p>Enter an account number, an account owner name as well as initial balance,
+		for new account to be created:</p>
+
+	<form action="#" th:object="${account}" method="GET"
+		th:action="@{/accounts/doadd}" class="form-horizontal">
+
+		<!-- Owner name field -->
+		<div class="form-group">
+			<label for="numerDiv" class="control-label col-xs-2">New account number</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="numerDiv"
+					th:field="*{number}" placeholder="Enter account numer"
+					style="width: 10em;" />
+			</div>
+			<div class="col-xs-8">Enter a valid 9 digit number</div>
+		</div>
+
+		<!-- Owner name errors (if any) -->
+		<div class="form-group">
+			<div class="control-label col-xs-2">&nbsp;</div>
+			<div class="col-xs-2">&nbsp;</div>
+			<div class="col-xs-8">
+				<span th:if="${#fields.hasErrors('number')}"
+					style="color: red; font-size: smaller" th:errors="*{number}"></span>
+			</div>
+		</div>
+		
+		<!-- Owner name field -->
+		<div class="form-group">
+			<label for="ownerDiv" class="control-label col-xs-2">New owner name</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="ownerDiv"
+					th:field="*{owner}" placeholder="Owner name"
+					style="width: 10em;" />
+			</div>
+			<div class="col-xs-8">Case-insensitive, supports part name
+				matching</div>
+		</div>
+
+		<!-- Owner name errors (if any) -->
+		<div class="form-group">
+			<div class="control-label col-xs-2">&nbsp;</div>
+			<div class="col-xs-2">&nbsp;</div>
+			<div class="col-xs-8">
+				<span th:if="${#fields.hasErrors('owner')}"
+					style="color: red; font-size: smaller" th:errors="*{owner}"></span>
+			</div>
+		</div>
+
+		<!-- Account Number field -->
+		<div class="form-group">
+			<label for="balanceDiv" class="control-label col-xs-2">Insert account balance</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="balanceDiv"
+					th:field="*{balance}" placeholder="Enter account balance"
+					style="width: 10em;" />
+			</div>
+			<div class="col-xs-8">no sepc.</div>
+		</div>
+
+		<!-- Account Number errors (if any) -->
+		<div class="form-group">
+			<div class="control-label col-xs-2">&nbsp;</div>
+			<div class="col-xs-2">&nbsp;</div>
+			<div class="col-xs-8">
+				<span th:if="${#fields.hasErrors('balance')}"
+					style="color: red; font-size: smaller" th:errors="*{balance}">Incorrect
+					data</span>
+			</div>
+		</div>
+		
+		<!--  Submit button -->
+		<div class="form-group">
+			<div class="col-xs-offset-2 col-xs-10">
+				<button type="submit" class="btn btn-primary">Find</button>
+			</div>
+		</div>
+	</form>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

@@ -37,3 +37,15 @@ footer {
 	color:#6DB33F;   /* Spring Green */
 	font-style: italic;
 }
+
+.new-account {
+	background: rgba(80, 160, 255, 0.2);
+	padding-left: 2px;
+}
+
+.new-account span:before {
+	color : #eff ;
+	position: relative;
+	left: 20%;
+	content: "NEW feature <<< ";
+}
