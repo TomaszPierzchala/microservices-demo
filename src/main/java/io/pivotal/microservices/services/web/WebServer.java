@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
+import io.pivotal.microservices.services.web.validator.AccountNonExistsConstraintValidator;
+
 /**
  * Accounts web-server. Works as a microservice client, fetching data from the
  * Account-Service. Uses the Discovery Server (Eureka) to find the microservice.
@@ -72,5 +74,10 @@ public class WebServer {
 	@Bean
 	public HomeController homeController() {
 		return new HomeController();
+	}
+	
+	@Bean
+	public AccountNonExistsConstraintValidator accountValidator() {
+		return new AccountNonExistsConstraintValidator(accountsService());
 	}
 }

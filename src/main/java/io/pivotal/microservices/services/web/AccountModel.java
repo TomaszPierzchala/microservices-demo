@@ -4,11 +4,14 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.Size;
 
+import io.pivotal.microservices.services.web.annotation.AccountNonExists;
+
 public class AccountModel {
 
 	private Long id;
 
 	@Size(min=9,max=9,message="Account number should be 9 digits")
+	@AccountNonExists
 	private String number;
 	@Size(min=1,message="Not empty string")
 	private String owner;
