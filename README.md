@@ -1,6 +1,6 @@
 # microservices-demo
 
-This is a copy/fork of Paul Chapman's repository [microservices-demo](https://github.com/paulc4/microservices-demo) with some, this time mine exstensions :smirk:
+This is a copy/fork of Paul Chapman's repository [microservices-demo](https://github.com/paulc4/microservices-demo) with some, this time mine exstensions :smirk: :
 
 1. Creating a new account (with validation annotation @AccountNonExist, checking if an account number is free)
  
