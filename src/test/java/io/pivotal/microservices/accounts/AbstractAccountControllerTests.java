@@ -92,4 +92,21 @@ public abstract class AbstractAccountControllerTests {
 			// Worked!
 		}
 	}
+	
+	@Test
+	public void validSaveNewAccount() {
+		Logger.getGlobal().info("Start validSaveNewAccount test");
+		final String OWNER_NAME = "Some name";
+		final String NUMBER = "987000321";
+		
+		Account saveIt = new Account(NUMBER, OWNER_NAME);
+
+		Account saved = accountController.createAccount(saveIt);
+		Assert.assertNotNull(saved);
+
+		Assert.assertEquals(NUMBER, saved.getNumber());
+		Assert.assertEquals(OWNER_NAME, saved.getOwner());
+		Logger.getGlobal().info("End validSaveNewAccount test");
+	}
+
 }

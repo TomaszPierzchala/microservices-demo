@@ -9,6 +9,11 @@ public class AccountsControllerTests extends AbstractAccountControllerTests {
 
 	protected static final Account theAccount = new Account(ACCOUNT_1,
 			ACCOUNT_1_NAME);
+	private static List<Account> dao_accounts = new ArrayList<Account>();
+	
+	static {
+		dao_accounts.add(theAccount);
+	}
 
 	protected static class TestAccountRepository implements AccountRepository {
 
@@ -32,7 +37,18 @@ public class AccountsControllerTests extends AbstractAccountControllerTests {
 
 		@Override
 		public int countAccounts() {
-			return 1;
+			return dao_accounts.size();
+		}
+
+		@Override
+		public List<Account> findAllByOrderByIdDesc() {
+			return dao_accounts;
+		}
+
+		@Override
+		public Account save(Account account) {
+			dao_accounts.add(account);
+			return account;
 		}
 	}
 

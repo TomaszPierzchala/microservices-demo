@@ -20,7 +20,11 @@ public class Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static Long nextId = 0L;
+	private static Long nextId = 0L;
+
+	synchronized public static void setNextId(Long nextId) {
+		Account.nextId = nextId;
+	}
 
 	@Id
 	protected Long id;
@@ -70,7 +74,11 @@ public class Account implements Serializable {
 	 *            The new id.
 	 */
 	protected void setId(long id) {
-		this.id = id;
+		if(id < 0) {
+			this.id = getNextId();
+		} else {
+			this.id = id;
+		}
 	}
 
 	public String getNumber() {
@@ -103,7 +111,7 @@ public class Account implements Serializable {
 
 	@Override
 	public String toString() {
-		return number + " [" + owner + "]: $" + balance;
+		return "Entity : " + number + " [" + owner + "]: $" + balance;
 	}
 
 }

@@ -36,4 +36,8 @@ public interface AccountRepository extends Repository<Account, Long> {
 	 */
 	@Query("SELECT count(*) from Account")
 	public int countAccounts();
+	
+	public List<Account> findAllByOrderByIdDesc();
+	
+	public Account save(Account account);
 }

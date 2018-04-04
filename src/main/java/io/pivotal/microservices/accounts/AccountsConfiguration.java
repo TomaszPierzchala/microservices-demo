@@ -55,6 +55,9 @@ public class AccountsConfiguration {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM T_ACCOUNT");
 		logger.info("System has " + accounts.size() + " accounts");
+		
+		// Set static Account.nextId
+		Account.setNextId(new Long(accounts.size()));
 
 		// Populate with random balances
 		Random rand = new Random();

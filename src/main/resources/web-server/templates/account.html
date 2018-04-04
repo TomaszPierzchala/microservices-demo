@@ -19,8 +19,10 @@
 	<div style="height: 2cm">&nbsp;</div>
 
 	<div style="text-align: right">
-		Options: <a th:href="@{/}">Home</a> | <a
-			th:href="@{/accounts/search}">Account Search</a>
+		Options: <a th:href="@{/}">Home</a> | 
+		<a th:href="@{/accounts/search}">Account Search</a> |
+		<a th:href="@{/accounts/showAll}">Show all accounts</a> |
+		<a th:href="@{/accounts/add}">Add new account</a> 	
 	</div>
 
 	<div th:replace="footer :: copy"></div>

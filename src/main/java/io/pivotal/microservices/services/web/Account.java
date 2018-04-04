@@ -24,7 +24,7 @@ public class Account {
 		balance = BigDecimal.ZERO;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -34,7 +34,7 @@ public class Account {
 	 * @param id
 	 *            The new id.
 	 */
-	protected void setId(long id) {
+	protected void setId(Long id) {
 		this.id = id;
 	}
 
@@ -65,7 +65,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return number + " [" + owner + "]: $" + balance;
+		return "Web : " + number + " [" + owner + "]: $" + balance;
 	}
 
 }

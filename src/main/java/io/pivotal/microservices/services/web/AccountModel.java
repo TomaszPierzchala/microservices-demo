@@ -6,6 +6,8 @@ import javax.validation.constraints.Size;
 
 public class AccountModel {
 
+	private Long id;
+
 	@Size(min=9,max=9,message="Account number should be 9 digits")
 	private String number;
 	@Size(min=1,message="Not empty string")
@@ -15,6 +17,7 @@ public class AccountModel {
 	
 	public AccountModel() {
 		balance = BigDecimal.ZERO;
+		id = -1l;
 	}
 
 	public String getNumber() {
@@ -49,6 +52,7 @@ public class AccountModel {
 
 	public Account getAccount() {
 		Account account = new Account();
+		account.setId(-1l);
 		account.setNumber(number);
 		account.setOwner(owner);
 		account.setBalance(balance);

@@ -49,3 +49,15 @@ footer {
 	left: 20%;
 	content: "NEW feature <<< ";
 }
+
+#new-accounts-list tr:first-child > td {
+	background-color: greenyellow;
+}
+
+#newly-created > div.row > div {
+	background-color: greenyellow;
+}
+#newly-created > div.row > div:first-child {
+	font-weight: bold;
+	text-align: right;
+}

@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,5 +85,32 @@ public class AccountsController {
 		else {
 			return accounts;
 		}
+	}
+	
+	@RequestMapping("/accounts/all")
+	public List<Account> all() {
+
+		List<Account> accounts = accountRepository.findAllByOrderByIdDesc();
+		logger.info("accounts-service all() found: " + accounts);
+
+		if (accounts == null || accounts.size() == 0)
+			throw new AccountNotFoundException("");
+		else {
+			return accounts;
+		}
+	}
+	
+	@RequestMapping("/accounts/addAccount")
+	public Account createAccount(@RequestBody Account entity) {
+		logger.info("accounts-service createAccount() invoked: "
+				+ accountRepository.getClass().getName() + " for "
+				+ entity);
+		
+		Account savedAccount = null;
+		savedAccount = accountRepository.save(entity);
+		
+		logger.info("accounts-service createAccount() saved: " + savedAccount);
+
+		return savedAccount;
 	}
 }

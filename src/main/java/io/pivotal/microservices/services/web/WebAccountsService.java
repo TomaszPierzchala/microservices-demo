@@ -82,4 +82,30 @@ public class WebAccountsService {
 		else
 			return account;
 	}
+
+	public List<Account> getAll() {
+		logger.info("getAll() invoked: ");
+		Account[] accounts = null;
+
+		try {
+			accounts = restTemplate.getForObject(serviceUrl
+					+ "/accounts/all", Account[].class);
+		} catch (HttpClientErrorException e) { // 404
+			// Nothing found
+		}
+
+		if (accounts == null || accounts.length == 0)
+			return null;
+		else
+			return Arrays.asList(accounts);
+	}
+	
+	public Account createAccount(Account account) {
+		logger.info("createAccount() invoked: for " + account);
+		Account result = null;
+
+		result = restTemplate.postForObject(serviceUrl + "/accounts/addAccount", account, Account.class);
+
+		return result;
+	}
 }

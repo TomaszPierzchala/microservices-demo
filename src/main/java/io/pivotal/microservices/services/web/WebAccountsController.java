@@ -1,7 +1,6 @@
 package io.pivotal.microservices.services.web;
 
-import io.pivotal.microservices.services.web.Account;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -97,19 +96,33 @@ public class WebAccountsController {
 		}
 	}
 	
+	@RequestMapping("/accounts/showAll")
+	public String showAll(@ModelAttribute("accounts") ArrayList<Account> accounts) {
+		accounts.addAll( accountsService.getAll() );
+		return "allAccounts";
+	}
+	
 	@RequestMapping(value = "/accounts/add", method = RequestMethod.GET)
 	public String searchForm(@ModelAttribute("account") AccountModel account) {
 		return "addAccount";
 	}
 	
 	@RequestMapping(value = "/accounts/doadd")
-	public String doAdd(@Valid @ModelAttribute("account") AccountModel  account,
-			BindingResult result) {
-		logger.info("web-service search() invoked: " + account);
+	public String doAdd(@Valid @ModelAttribute("account") AccountModel  accountIn,
+			BindingResult result, @ModelAttribute("accounts") ArrayList<Account> accounts) {
+		logger.info("web-service doAdd() invoked: " + accountIn);
 
-		if (result.hasErrors()) 	return "addAccount";
-
-		return "account"; // TODO to be finshed
+		if (result.hasErrors()) {
+			return "addAccount";
+		}
+		
+		Account account = accountIn.getAccount();
+		account = accountsService.createAccount(account);
+		
+		logger.info("web-service doAdd() has created the account : " + account);
+		
+		accounts.addAll( accountsService.getAll() );
+		return "accountCreated";
 	}
 
 }
